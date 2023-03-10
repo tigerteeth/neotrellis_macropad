@@ -10,13 +10,13 @@ trellis = adafruit_trellism4.TrellisM4Express(rotation=0)
 
 trellis.pixels.brightness = 1
 for i in range(1,8):
-    trellis.pixels[(i,0)] = (25,10,0)
-    trellis.pixels[(i,2)] = (25,10,0)
+    trellis.pixels[(i,0)] = (0,10,20)
+    trellis.pixels[(i,2)] = (0,10,20)
 for i in range(1,8):
-    trellis.pixels[(i,1)] = (0,0,30)
-    trellis.pixels[(i,3)] = (0,0,30)
-trellis.pixels[(0,0)] = (25,5,5)
-trellis.pixels[(0,1)] = (25,5,5)
+    trellis.pixels[(i,1)] = (30,10,0)
+    trellis.pixels[(i,3)] = (20,10,0)
+trellis.pixels[(0,0)] = (30,0,0)
+trellis.pixels[(0,1)] = (30,0,0)
 trellis.pixels[(0,2)] = (15,15,15)
 trellis.pixels[(0,3)] = (0,40,0)
 
@@ -48,7 +48,6 @@ while True:
         for i in range(32):
             if coo[i] in down and coo[i] not in previous_down:  # check if the button is currently pressed and was not pressed in the previous iteration
                 if coo[i] == (0,2):
-                    print(switched)
                     if switched:
                         switched = False
                         trellis.pixels[(0,2)] = (10,10,10)
@@ -77,4 +76,3 @@ while True:
         previous_down = down.copy()  # update the previous state of the pressed keys with a copy of the current state
     else:
         previous_down = set()  # clear previous_down if no buttons are currently pressed
-
